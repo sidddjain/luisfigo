@@ -9,6 +9,23 @@ body{
 	margin: 0px;
 }
 
+@keyframes nudge {
+	0%, 100% {
+		transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+	}
+
+	50% {
+		transform: translate(150px, 0);
+		-webkit-transform: translate(150px, 0);
+	}
+
+	80% {
+		transform: translate(-150px, 0);
+		-webkit-transform: translate(-150px, 0);
+	}
+}
+
 .narrowsea{
 	height: 100%;
 	width: 100%;
@@ -16,36 +33,44 @@ body{
 	background-color: #362c82;
 }
 
+.wave1{
+	position: absolute;
+}
+
 .zigzag {
-    width: 64px;
-  /*margin: 7.5% 0;*/
-  /*background: #F7F2E2;*/
-  position: relative;
-  height: 16px;
-  z-index: 1;
+	width: 64px;
+	position: relative;
+	height: 16px;
+	z-index: 1;
+	display: inline-block;
+	/*animation: nudge 5s linear infinite alternate;*/
 }
+
 .zigzag:before, .zigzag:after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
 }
+
 .zigzag:before {
-  height: 12px;
-  top: 110%;
-  background: -webkit-linear-gradient(225deg, #F7A9B9 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #F7A9B9 8px, transparent 0) 0 8px;
-  background: linear-gradient(-135deg, #F7A9B9 8px, transparent 0) 0 8px, linear-gradient(135deg, #F7A9B9 8px, transparent 0) 0 8px;
-  background-position: top left;
-  background-repeat: repeat-x;
-  background-size: 16px 16px;
+	height: 12px;
+	top: 110%;
+	background: -webkit-linear-gradient(225deg, #4c9ed4 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #4c9ed4 8px, transparent 0) 0 8px;
+	background: linear-gradient(-135deg, #4c9ed4 8px, transparent 0) 0 8px, linear-gradient(135deg, #4c9ed4 8px, transparent 0) 0 8px;
+	background-position: top left;
+	background-repeat: repeat-x;
+	background-size: 16px 16px;
 }
+
 .zigzag:after {
-  height: 16px;
-  top: 100%;
-  background: -webkit-linear-gradient(225deg, #362c82 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #362c82 8px, transparent 0) 0 8px;
-  background: linear-gradient(-135deg, #362c82 8px, transparent 0) 0 8px, linear-gradient(135deg, #362c82 8px, transparent 0) 0 8px;
-  background-position: top left;
-  background-repeat: repeat-x;
-  background-size: 16px 16px;
+	height: 16px;
+	top: 100%;
+	background: -webkit-linear-gradient(225deg, #362c82 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #362c82 8px, transparent 0) 0 8px;
+	background: linear-gradient(-135deg, #362c82 8px, transparent 0) 0 8px, linear-gradient(135deg, #362c82 8px, transparent 0) 0 8px;
+	background-position: top left;
+	background-repeat: repeat-x;
+	background-size: 16px 16px;
 }
+

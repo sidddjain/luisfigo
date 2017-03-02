@@ -17,17 +17,32 @@
 	<div> </div>
 
 	<div class="narrowsea">
-		<div class="zigzag">
-			
+		<div class="wave1">
+			<div class="zigzag"></div>
 		</div>
 		
 	</div>
 
 	
 </body>
-
+<script type="text/javascript" src="/home/abhay/Downloads/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		docwidth = $(window).width();
+		var x = function(){
+			$('.wave1').animate({
+				left: ""+(docwidth+50),
+			}, 5000, 'linear', function(){
+				pos = $('.wave1').width() * -1;
+				$('.wave1').css('left', pos);
+			})
+		}
+		x();
+		window.setInterval(x, 500);
+	})
+</script>
 <!-- 
 	Now we will import the good stuff. 
 	That is JQuery and shit..!
- -->
+-->
 </html>
