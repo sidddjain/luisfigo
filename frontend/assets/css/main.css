@@ -1,51 +1,398 @@
-html{
+@font-face {
+	font-family: 'museo-regular';
+	src: url('../fonts/museo-regular.ttf');
+}
+
+@font-face {
+	font-family: 'museo-bold';
+	src: url('../fonts/museo-bold.ttf')
+}
+
+html {
 	height: 100%;
 	width: 100%;
 }
 
-body{
+body {
 	height: 100%;
 	width: 100%;
 	margin: 0px;
+	overflow-x: hidden;
 }
 
-.narrowsea{
+.narrowsea {
 	height: 100%;
 	width: 100%;
-	position: fixed;
-	background-color: #362c82;
+	position: relative;
+	left: 0px;
+	background-color: #2c3e50;
 }
 
 .zigzag {
-    width: 64px;
-  /*margin: 7.5% 0;*/
-  /*background: #F7F2E2;*/
-  position: relative;
-  height: 16px;
-  z-index: 1;
+	width: 64px;
+	/*margin: 7.5% 0;*/
+	/*background: #F7F2E2;*/
+	position: relative;
+	height: 16px;
+	z-index: 1;
 }
-.zigzag:before, .zigzag:after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-.zigzag:before {
-  height: 12px;
-  top: 110%;
-  background: -webkit-linear-gradient(225deg, #F7A9B9 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #F7A9B9 8px, transparent 0) 0 8px;
-  background: linear-gradient(-135deg, #F7A9B9 8px, transparent 0) 0 8px, linear-gradient(135deg, #F7A9B9 8px, transparent 0) 0 8px;
-  background-position: top left;
-  background-repeat: repeat-x;
-  background-size: 16px 16px;
-}
+
+.zigzag:before,
 .zigzag:after {
-  height: 16px;
-  top: 100%;
-  background: -webkit-linear-gradient(225deg, #362c82 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #362c82 8px, transparent 0) 0 8px;
-  background: linear-gradient(-135deg, #362c82 8px, transparent 0) 0 8px, linear-gradient(135deg, #362c82 8px, transparent 0) 0 8px;
-  background-position: top left;
-  background-repeat: repeat-x;
-  background-size: 16px 16px;
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.zigzag:before {
+	height: 12px;
+	top: 110%;
+	background: -webkit-linear-gradient(225deg, #F7A9B9 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #F7A9B9 8px, transparent 0) 0 8px;
+	background: linear-gradient(-135deg, #F7A9B9 8px, transparent 0) 0 8px, linear-gradient(135deg, #F7A9B9 8px, transparent 0) 0 8px;
+	background-position: top left;
+	background-repeat: repeat-x;
+	background-size: 16px 16px;
+}
+
+.zigzag:after {
+	height: 16px;
+	top: 100%;
+	background: -webkit-linear-gradient(225deg, #362c82 8px, transparent 0) 0 8px, -webkit-linear-gradient(315deg, #362c82 8px, transparent 0) 0 8px;
+	background: linear-gradient(-135deg, #362c82 8px, transparent 0) 0 8px, linear-gradient(135deg, #362c82 8px, transparent 0) 0 8px;
+	background-position: top left;
+	background-repeat: repeat-x;
+	background-size: 16px 16px;
+}
+
+.map-right {
+	position: absolute;
+	z-index: 4;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.map-right-content img {
+	position: absolute;
+	height: 100%;
+	right: 0;
+	transition: all 0.7s ease;
+	bottom: 0;
+	top: 20px;
+}
+
+.map-right-content {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 60%;
+}
+
+.map-left {
+	position: fixed;
+	z-index: 4;
+	bottom: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.map-left-content img {
+	position: absolute;
+	height: 100%;
+	left: 0;
+	right: 0;
+	transition: all 0.7s ease;
+	top: 100px;
+}
+
+.map-left-content {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 85%;
+}
+
+.tooltip {
+	position: absolute;
+	z-index: 999;
+	width: 1em;
+	height: 1em;
+	cursor: pointer;
+}
+
+.tooltip-item {
+	width: 30px;
+	height: 30px;
+	left: 50%;
+	top: 50%;
+	margin: -15px 0 0 -15px;
+	position: absolute;
+	border-radius: 50%;
+	border: 2px solid #ecf0f1;
+	-webkit-animation: pulse 0.6s infinite alternate;
+	animation: pulse 0.6s infinite alternate;
+}
+
+@-webkit-keyframes pulse {
+	from {
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+	}
+	to {
+		-webkit-transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes pulse {
+	from {
+		-webkit-transform: scale3d(0.5, 0.5, 1);
+		transform: scale3d(0.5, 0.5, 1);
+	}
+	to {
+		-webkit-transform: scale3d(1, 1, 1);
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.tooltip:hover .tooltip-item {
+	border-color: #fff;
+}
+
+.tooltip:first-child {
+	top: 20%;
+	left: 20%;
+}
+
+.tooltip:nth-child(2) {
+	top: 50%;
+	left: 10%;
+}
+
+.tooltip:nth-child(3) {
+	top: 40%;
+	left: 50%;
+}
+
+.tooltip:nth-child(4) {
+	top: 70%;
+	left: 70%;
+}
+
+.tooltip-content {
+	position: absolute;
+	background: #ecf0f1;
+	z-index: 9999;
+	width: 150px;
+	bottom: 50%;
+	margin-bottom: -1em;
+	padding: 20px;
+	border-radius: 20px;
+	font-size: 1.1em;
+	text-align: center;
+	color: #2c3e50;
+	opacity: 0;
+	cursor: default;
+	pointer-events: none;
+	font-family: 'museo-bold';
+	-webkit-font-smoothing: antialiased;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+.tooltip-west .tooltip-content {
+	left: 4em;
+	-webkit-transform-origin: -2em 50%;
+	transform-origin: -2em 50%;
+	-webkit-transform: translate3d(0, 50%, 0) rotate3d(1, 1, 1, 30deg);
+	transform: translate3d(0, 50%, 0) rotate3d(1, 1, 1, 30deg);
+}
+
+.tooltip-east .tooltip-content {
+	right: 4em;
+	-webkit-transform-origin: calc(100% + 2em) 50%;
+	transform-origin: calc(100% + 2em) 50%;
+	-webkit-transform: translate3d(0, 50%, 0) rotate3d(1, 1, 1, -30deg);
+	transform: translate3d(0, 50%, 0) rotate3d(1, 1, 1, -30deg);
+}
+
+.tooltip:hover .tooltip-content {
+	opacity: 1;
+	-webkit-transform: translate3d(0, 50%, 0) rotate3d(0, 0, 0, 0);
+	transform: translate3d(0, 50%, 0) rotate3d(0, 0, 0, 0);
+	pointer-events: auto;
+}
+
+.tooltip-content::before,
+.tooltip-content::after {
+	content: '';
+	position: absolute;
+}
+
+.tooltip-content::before {
+	height: 100%;
+	width: 3em;
+}
+
+.tooltip-content::after {
+	width: 2em;
+	height: 2em;
+	top: 50%;
+	margin: -1em 0 0;
+	background: url(../images/tooltip2.svg) no-repeat center center;
+	background-size: 100%;
+}
+
+.tooltip-west .tooltip-content::before,
+.tooltip-west .tooltip-content::after {
+	right: 99%;
+}
+
+.tooltip-east .tooltip-content::before,
+.tooltip-east .tooltip-content::after {
+	left: 99%;
+}
+
+.tooltip-east .tooltip-content::after {
+	-webkit-transform: scale3d(-1, 1, 1);
+	transform: scale3d(-1, 1, 1);
+}
+
+.heading {
+	text-align: center;
+}
+
+.heading img {
+	width: 35%;
+}
+
+.bg-events {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	left: 0px;
+	background-color: #ffffff;
+}
+
+
+.tilter {
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 260px;
+	margin-top: 200px;
+	margin-right: 10px;
+	color: #fff;
+	flex: none;
+	perspective: 1000px;
+}
+
+.tilter * {
+	pointer-events: none;
+}
+
+.tilter:hover,
+.tilter:focus {
+	color: #fff;
+	outline: none;
+}
+
+.tilter__figure,
+.tilter__image {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.tilter__figure > * {
+	transform: translateZ(0px);
+}
+
+.smooth .tilter__figure,
+.smooth .tilter__deco--overlay,
+.smooth .tilter__deco--lines,
+.smooth .tilter__deco--shine div,
+.smooth .tilter__caption {
+	transition: transform 0.2s ease-out;
+}
+
+.tilter__figure {
+	position: relative;
+}
+
+.tilter__figure::before {
+	content: '';
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	top: 5%;
+	left: 5%;
+	/*	box-shadow: 0 30px 20px rgba(35,32,39,0.5);*/
+}
+
+.tilter__deco {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+/*
+.tilter__deco--overlay {
+	background-image: linear-gradient(45deg, rgba(226, 60, 99, 0.4), rgba(145, 58, 252, 0.4), rgba(16, 11, 192, 0.4));
+}
+*/
+
+.tilter__deco--shine div {
+	position: absolute;
+	width: 200%;
+	height: 200%;
+	top: -50%;
+	left: -50%;
+	background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+}
+
+.tilter__deco--lines {
+	fill: none;
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+.tilter__caption {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 4em;
+}
+
+.tilter__title {
+	font-weight: normal;
+	font-size: 1.5em;
+	font-family: 'museo-bold';
+	color: black;
+}
+
+
+/*
+.tilter_1 .tilter__figure::before {
+	box-shadow: 0 30px 20px rgba(0,0,0,0.5);
+}
+*/
+
+.close {
+	cursor: pointer;
+	background-image: url(../images/cross.svg);
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 20px;
+	width: 40px;
+	height: 40px;
+	z-index: 1000;
+	background-size: cover;
 }
