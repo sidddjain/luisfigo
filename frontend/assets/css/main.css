@@ -1,11 +1,16 @@
 @font-face {
-	font-family: 'museo-regular';
-	src: url('../fonts/museo-regular.ttf');
+	font-family: 'mont-b';
+	src: url('../fonts/mont-b.otf');
 }
 
 @font-face {
-	font-family: 'museo-bold';
-	src: url('../fonts/museo-bold.ttf')
+	font-family: 'mont-l';
+	src: url('../fonts/mont-l.otf')
+}
+
+@font-face {
+	font-family: 'mont-r';
+	src: url('../fonts/mont-r.otf')
 }
 
 html {
@@ -302,7 +307,6 @@ body {
 	width: 100%;
 	position: relative;
 	left: 0px;
-
 	background-color: #ffffff;
 }
 
@@ -439,11 +443,199 @@ body {
 	position: absolute;
 	overflow: hidden;
 	text-align: center;
-
 }
 
 .logo img {
 	width: 50%;
 	height: auto;
-	
+}
+
+.image img {
+	width: 90%;
+}
+
+#left {
+	position: absolute;
+	top: 0px;
+	bottom: 0;
+	left: 0;
+	overflow-y: scroll;
+}
+
+.right {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	overflow-y: scroll;
+}
+
+#left {
+	background-color: white;
+	height: 100%;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+	background: black;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: grey;
+}
+
+.event-description h2 {
+	color: white;
+	font-family: 'mont-b';
+}
+
+.event-description p {
+	color: white;
+	font-family: 'mont-l';
+}
+
+.event-description ul li {
+	color: white;
+	font-family: 'mont-l';
+}
+
+::-moz-selection {
+	color: white;
+	background: black;
+}
+
+::selection {
+	color: white;
+	background: black;
+}
+
+.left-nav ul {
+	padding: 0px;
+}
+
+.left-nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.category-heading {
+	color: black;
+	text-align: center;
+	font-family: 'mont-b';
+	margin-top: 0px;
+	margin-bottom: 22px;
+}
+
+.right {
+	height: 100%;
+	text-align: left;
+	background-position: top right;
+	background-size: 300px 300px;
+	background-repeat: no-repeat;
+}
+
+.left-nav ul li a {
+	font-family: 'mont-b';
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 8px;
+	color: white;
+	text-align: justify !important;
+}
+
+
+/*coderz*/
+
+#category-coderz {
+	background-color: #e74c3c;
+	background-image: url(../images/Lannister.png);
+}
+
+#coderz ul li a {
+	background-color: #e74c3c;
+}
+
+
+/*mechavoltz*/
+
+#category-mechavoltz {
+	background-color: #e67e22;
+	background-image: url(../images/Baratheon.png);
+}
+
+#mechavoltz ul li a {
+	background-color: #e67e22;
+}
+
+
+/*robotiles*/
+
+#category-robotiles {
+	background-color: #34495e;
+	background-image: url(../images/Targaryen.png);
+}
+
+#robotiles ul li a {
+	background-color: #34495e;
+}
+
+
+/*palyiton*/
+
+#category-playiton {
+	background-color: #95a5a6;
+	background-image: url(../images/Stark.png);
+}
+
+#category-playiton h2,
+#category-playiton p,
+#category-playiton ul li {
+	color: black;
+}
+
+#playiton ul li a {
+	background-color: #95a5a6;
+	color: black
+}
+
+
+/*zwars*/
+
+#category-zwars {
+	background-color: #f1c40f;
+	background-image: url(../images/Greyjoy.png);
+}
+
+#category-zwars h2,
+#category-zwars p,
+#category-zwars ul li {
+	color: black;
+}
+
+#zwars ul li a {
+	background-color: #f1c40f;
+	color: black;
+}
+
+
+/*coloralo*/
+
+#category-coloralo {
+	background-color: #3498db;
+	background-image: url(../images/arryn.png);
+}
+
+#coloralo ul li a {
+	background-color: #3498db;
 }

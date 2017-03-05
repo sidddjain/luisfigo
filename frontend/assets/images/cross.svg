@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="265.949px" height="265.949px" viewBox="0 0 265.949 265.949" enable-background="new 0 0 265.949 265.949"
-	 xml:space="preserve">
-<rect x="40.447" y="40.447" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -55.0799 132.9746)" opacity="0.5" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-miterlimit="10" width="185.055" height="185.055"/>
-<g>
-
-		<line opacity="0.7" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-miterlimit="10" x1="85.907" y1="85.907" x2="180.041" y2="180.042"/>
-
-		<line opacity="0.7" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-miterlimit="10" x1="180.042" y1="85.907" x2="85.907" y2="180.042"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846 846"><title>Close Button</title><g id="Layer_1" data-name="Layer 1"><path d="M500,105.28,894.72,500,500,894.72,105.28,500,500,105.28M500,77,77,500,500,923,923,500,500,77Z" transform="translate(-77 -77)"/></g><g id="Layer_2" data-name="Layer 2"><polygon points="573.66 257.04 258 572.7 273.34 588.04 589 272.38 573.66 257.04 573.66 257.04"/></g><g id="Layer_2_copy" data-name="Layer 2 copy"><polygon points="273.34 257.04 258 272.38 573.66 588.04 589 572.7 273.34 257.04 273.34 257.04"/></g></svg>
