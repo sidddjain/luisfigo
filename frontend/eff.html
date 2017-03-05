@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zealicon</title>
+	<authors></authors>
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+
+<body>
+	<canvas id="inkCanvas" width="298" height="168"></canvas>
+
+	
+</body>
+<script type="text/javascript" src="/home/abhay/Downloads/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+
+	var canvas = document.querySelector("#inkCanvas");
+	var context = canvas.getContext("2d");
+	var sNo=window.location.hash.charAt(1);
+	var bg = new Image();
+	bg.src = "assets/images/loaderbg.jpg";
+	var myImage = new Image();
+	myImage.src = "assets/images/mask.png";
+
+	
+	var shift = 0;
+	var frameWidth = 298;
+	$('#inkCanvas').css('height', $(window).height()+4);
+	$('#inkCanvas').css('width', $(window).width());
+	var frameHeight = 168;
+	var totalFrames = 40;
+	var currentFrame = 0;
+	var maxSpeed=3;
+	var speedvar=0;
+
+	function animate() {
+		context.clearRect(0, 0, 298, 168);
+		context.globalCompositeOperation = "xor";
+		context.drawImage(myImage, shift, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+		context.drawImage(bg, 0, 0, 1600, 907, 0, 0, frameWidth, frameHeight);
+		if (speedvar==maxSpeed){
+			shift += frameWidth;
+			speedvar=0;
+		}
+
+		if (currentFrame != totalFrames*maxSpeed) {
+			// shift = 0;
+			// currentFrame = 0;
+			requestAnimationFrame(animate);
+			currentFrame++;
+		}
+
+		speedvar++;
+		if (currentFrame == totalFrames*maxSpeed) {
+			$('#inkCanvas').hide();
+		}
+
+	}
+	animate()
+
+
+</script>
+<!-- 
+	Now we will import the good stuff. 
+	That is JQuery and shit..!
+-->
+</html>

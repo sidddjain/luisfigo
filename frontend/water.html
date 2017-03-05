@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zealicon</title>
+	<authors></authors>
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+</head>
+
+<body>
+
+	<canvas id="narrowsea">
+
+	</canvas>
+
+	
+</body>
+<script type="text/javascript" src="/home/abhay/Downloads/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	var docHeight = window.innerHeight;
+	var docWidth = window.innerWidth;
+	var canvas = document.querySelector('#narrowsea');
+	var can = $('#narrowsea');
+	var ctx = canvas.getContext("2d");
+	var slotX = 200;
+	var slotY = 50;
+
+	$(document).ready(function(){
+		ctx.canvas.width  = docWidth;
+		ctx.canvas.height = docHeight;
+		window.requestAnimationFrame(draw);
+	})
+
+	var getWave = function(len, h, x, y, initX){
+		var wave = new Path2D();
+		var next = h + initX;
+		var c = 0;
+		while(x > next){
+			next += h;
+			c++;
+		}
+		if(x < 0){
+			next = initX; 
+			while(x <= (next - h)){
+				next -= h;
+				c++;
+			}
+			c++;
+		}
+		console.log(c)
+
+		var prev = next - h;
+		var diff;
+		diff = x - prev;	
+		if(c % 2 == 0){
+			wave.moveTo(x, y + h - diff);
+		}else{
+			wave.moveTo(x, y + diff);
+		}
+		while(len--){
+			if(c % 2 == 0){
+				wave.lineTo(next, y);
+				next += h;
+				wave.lineTo(next, h + y);
+				next += h;
+			}else{
+				wave.lineTo(next, y+h);
+				console.log(next, h + y);
+				next += h;
+				wave.lineTo(next, y);
+				console.log(next, y);
+				next += h;
+			}
+		}
+		if(x % h != 0 && c % 2 == 0 && (x <= h || c != 0)){
+			wave.lineTo((next + diff - h), (y - diff + h));
+		}
+		if(x % h == 0 && c % 2 == 0 && (x <= h || c != 0)){
+			wave.lineTo(next, y);
+		}
+		if(x % h != 0 && c % 2 != 0)
+			wave.lineTo((next + diff - h), (y + diff));
+		if(x % h == 0 && c % 2 != 0)
+			wave.lineTo(next, y + h);
+		return wave;
+	}
+
+	var populateWater = function(ctx, state){
+		var offsetX;
+		var offsetY;
+		for (var i = 0; i < docHeight/slotY; i++) {
+			for(var j = -1; j < docWidth/slotX; j++){
+				h = state[i][j].h;
+				len = state[i][j].len;
+				state[i][j].startX++;
+				/*if(state[i][j].startX > docWidth){
+					state.splice(0, 0, state.pop());
+				}*/
+				var a = new Path2D(getWave(len, h, state[i][j].x++, state[i][j].y, state[i][j].initX));
+				ctx.stroke(a);
+			}
+		}
+		window.requestAnimationFrame(draw);
+	}
+
+	var initState = function(){
+		var a = new Array();
+		for (var i = 0; i < docHeight/slotY; i++) {
+			a[i] = new Array();
+			for(var j = -1; j < docWidth/slotX; j++){
+				var len = Math.round(Math.random() * 4) + 1;
+				var h = Math.round(Math.random()) + 4;
+				offsetX = j * slotX + Math.random() * (slotX - len *20);
+				offsetY = i * slotY + Math.random() * (slotY - h);
+				a[i][j] = {x: offsetX, y: offsetY, dir: 0, len: len, h: h, initX: offsetX, startX: j * slotX};
+			}
+		}
+		return a;
+	}
+
+	var state = initState();
+	var numBlocksX = Math.round(Math.random() * docWidth/400);
+	var block = 3;
+	var step = block * 400 + Math.random() * (400 - 200);
+	var step = 20;
+	var ini = step;
+	console.log(step)
+	var log = 0;
+	var draw = function(){
+		ctx.rect(0, 0, window.innerWidth, window.innerHeight);
+		ctx.fillStyle = '#362c82';
+		ctx.fill();
+		ctx.lineWidth = 2
+		ctx.strokeStyle = '#4c9ed4';
+/*		var a = new Path2D(getWave(5, 20, step, 200, 0));
+		ctx.stroke(a);
+		step+=2
+		if(step > docWidth){
+			step = ini;
+			while(step > -200){
+				step -= 200;
+			}
+			if(log == 0){
+				console.log(step)
+			}
+			log = 1;
+		}*/
+		// window.requestAnimationFrame(draw);
+		populateWater(ctx, state);
+	}
+
+</script>
+<!-- 
+	Now we will import the good stuff. 
+	That is JQuery and shit..!
+-->
+</html>
