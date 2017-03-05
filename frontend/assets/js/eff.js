@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Zealicon</title>
-	<authors></authors>
-	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-</head>
 
-<body>
-	<canvas id="inkCanvas" width="298" height="168"></canvas>
-
-
-</body>
-<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript">
-
-	var canvas = document.querySelector("#inkCanvas");
-	var context = canvas.getContext("2d");
+	var canvasX = document.querySelector("#inkCanvas");
+	var context = canvasX.getContext("2d");
 	var sNo=window.location.hash.charAt(1);
 	var bg = new Image();
 	bg.src = "assets/images/loaderbg.jpg";
@@ -33,8 +18,14 @@
 	var maxSpeed=3;
 	var speedvar=0;
 
+  function setImage(canvas){
+    context.drawImage(canvas, 0, 0);
+  }
+
 	function animate() {
 		context.clearRect(0, 0, 298, 168);
+    context.fillStyle = '#ff0000';
+    context.fill();
 		context.globalCompositeOperation = "xor";
 		context.drawImage(myImage, shift, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 		context.drawImage(bg, 0, 0, 1600, 907, 0, 0, frameWidth, frameHeight);
@@ -44,8 +35,6 @@
 		}
 
 		if (currentFrame != totalFrames*maxSpeed) {
-			// shift = 0;
-			// currentFrame = 0;
 			requestAnimationFrame(animate);
 			currentFrame++;
 		}
@@ -56,12 +45,3 @@
 		}
 
 	}
-	animate()
-
-
-</script>
-<!--
-	Now we will import the good stuff.
-	That is JQuery and shit..!
--->
-</html>

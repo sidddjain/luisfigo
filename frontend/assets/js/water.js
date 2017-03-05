@@ -10,6 +10,12 @@ $(document).ready(function () {
 	ctx.canvas.height = docHeight;
 	window.requestAnimationFrame(draw);
 })
+
+function setImage2(can){
+	console.log(canvas, can)
+	ctx.drawImage(can, 0, 0)
+}
+
 var getWave = function (len, h, x, y, initX) {
 	var wave = new Path2D();
 	var next = h + initX;
@@ -26,7 +32,7 @@ var getWave = function (len, h, x, y, initX) {
 		}
 		c++;
 	}
-	console.log(c)
+	// console.log(c)
 	var prev = next - h;
 	var diff;
 	diff = x - prev;
@@ -45,10 +51,10 @@ var getWave = function (len, h, x, y, initX) {
 		}
 		else {
 			wave.lineTo(next, y + h);
-			console.log(next, h + y);
+			// console.log(next, h + y);
 			next += h;
 			wave.lineTo(next, y);
-			console.log(next, y);
+			// console.log(next, y);
 			next += h;
 		}
 	}
@@ -77,7 +83,7 @@ var populateWater = function (ctx, state) {
 			ctx.stroke(a);
 		}
 	}
-	window.requestAnimationFrame(draw);
+	// window.requestAnimationFrame(draw);
 }
 var initState = function () {
 	var a = new Array();
@@ -107,7 +113,7 @@ var block = 3;
 var step = block * 400 + Math.random() * (400 - 200);
 var step = 20;
 var ini = step;
-console.log(step)
+// console.log(step)
 var log = 0;
 var draw = function () {
 	ctx.rect(0, 0, window.innerWidth, window.innerHeight);
