@@ -12,9 +12,9 @@
 
 	</canvas>
 
-	
+
 </body>
-<script type="text/javascript" src="/home/abhay/Downloads/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 	var docHeight = window.innerHeight;
 	var docWidth = window.innerWidth;
@@ -39,7 +39,7 @@
 			c++;
 		}
 		if(x < 0){
-			next = initX; 
+			next = initX;
 			while(x <= (next - h)){
 				next -= h;
 				c++;
@@ -50,7 +50,7 @@
 
 		var prev = next - h;
 		var diff;
-		diff = x - prev;	
+		diff = x - prev;
 		if(c % 2 == 0){
 			wave.moveTo(x, y + h - diff);
 		}else{
@@ -99,7 +99,7 @@
 				ctx.stroke(a);
 			}
 		}
-		window.requestAnimationFrame(draw);
+		// window.requestAnimationFrame(draw);
 	}
 
 	var initState = function(){
@@ -149,8 +149,8 @@
 	}
 
 </script>
-<!-- 
-	Now we will import the good stuff. 
+<!--
+	Now we will import the good stuff.
 	That is JQuery and shit..!
 -->
 </html>

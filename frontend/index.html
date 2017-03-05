@@ -8,13 +8,16 @@
 	</head>
 
 <body>
-<canvas id="narrowsea"></canvas>
-	<!-- 
-		This partiular div has been left for loader. 
+
+	<canvas id="inkCanvas" width="298" height="168"></canvas>
+	<canvas id="narrowsea"></canvas>
+	<div class="eventpage"></div>
+	<!--
+		This partiular div has been left for loader.
 	-->
 	<div> </div>
-	<!-- 
-		This partiular div has been left for audio. 
+	<!--
+		This partiular div has been left for audio.
 	-->
 	<div> </div>
 	<div class="narrowsea">
@@ -47,32 +50,34 @@
 							<span class="tooltip-item"></span>
 							<span class="tooltip-content">Team</span>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/html2canvas.js"></script>
 	<script src="assets/js/water.js"></script>
+	<script>
+	var canvasX;
+		$(document).ready(function(){
+			window.setTimeout(function(){
+				html2canvas(document.body, {
+					logging: true,
+					onrendered: function(canvas) {
+					// setImage(canvas);
+					animate();
+				}
+			})
+			}, 2000);
+		})
+
+	</script>
 
 </body>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		docwidth = $(window).width();
-		var x = function(){
-			$('.wave1').animate({
-				left: ""+(docwidth+50),
-			}, 5000, 'linear', function(){
-				pos = $('.wave1').width() * -1;
-				$('.wave1').css('left', pos);
-			})
-		}
-		x();
-		window.setInterval(x, 500);
-	})
-</script>
-
+<script src="assets/js/eff.js"></script>
 </html>
